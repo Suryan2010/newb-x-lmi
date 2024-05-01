@@ -41,7 +41,7 @@
 #define NL_TORCH_INTENSITY 1.4  // 0.5 weak ~ 3.0 bright
 #define NL_NIGHT_BRIGHTNESS -0.86 // 0.0 dark ~ 2.0 bright
 #define NL_CAVE_BRIGHTNESS  -0.3 // 0.0 dark ~ 2.0 bright
-#define NL_SHADOW_INTENSITY 1.4 // 0.0 no shadow ~ 1.0 strong shadow
+#define NL_SHADOW_INTENSITY 1.7 // 0.0 no shadow ~ 1.0 strong shadow
 #define NL_BLINKING_TORCH     // [toggle] flickering light
 #define NL_TERRAIN_LIGHTING 1       // 1:added side shadow to block, 2:normal terrain lighting
 //#define NL_CLOUD_SHADOW       // [toggle] cloud shadow (simple clouds only)
@@ -213,7 +213,9 @@
   #undef NL_NIGHT_BRIGHTNESS
   #define NL_NIGHT_BRIGHTNESS 0.8
   #undef NL_CAVE_BRIGHTNESS
-  #define NL_CAVE_BRIGHTNESS 7.0
+  #define NL_CAVE_BRIGHTNESS 9.0
+  #undef NL_SHADOW_INTENSITY
+  #define NL_SHADOW_INTENSITY 1.0
 #endif
 
 #ifdef APOCALYPSE_TERRAIN
