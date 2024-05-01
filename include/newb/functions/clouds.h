@@ -39,12 +39,33 @@ vec4 renderCloudsSimple(vec3 pos, highp float t, float rain, vec3 zenithCol, vec
   return color;
 }
 
-// rounded clouds
+// rounded cloud
+
+// 2d noise
+float noise(vec2 p){
+  vec2 p0 = floor(p);
+	vec2 u = p-p0;
+
+	u *= u*(3.0-2.0*u);
+	vec2 v = 1.0 - u;
+
+	float c1 = rand(p0);
+	float c2 = rand(p0+vec2(1.0,0.0));
+	float c3 = rand(p0+vec2(0.0,1.0));
+	float c4 = rand(p0+vec2(1.0,1.0));
+
+	float n = v.y*mix(c1,c2,u.x) + u.y*(c3*v.x+c4*u.x);
+	return n;
+}
 
 // rounded clouds 3D density map
 float cloudDf(vec3 pos, float rain) {
   vec2 p0 = floor(pos.xz);
-  vec2 u = smoothstep(0.999*NL_CLOUD2_SHAPE, 1.0, pos.xz-p0);
+  vec2 u = pos.xz - p0;
+  //u = smoothstep(0.99*NL_CLOUD2_SHAPE,1.0,u);
+  u = max((u-NL_CLOUD2_SHAPE)/(1.0-NL_CLOUD2_SHAPE),0.0);
+  //u = 3.0*u*u - 2.0*u*u*u;
+  vec2 v = 1.0 - u;
   
   // rain transition
   vec2 t = vec2(0.1001+0.2*rain, 0.1+0.2*rain*rain);
@@ -57,7 +78,7 @@ float cloudDf(vec3 pos, float rain) {
 	
   // round y
   float b = 1.0 - 1.9*smoothstep(NL_CLOUD2_SHAPE, 2.0 - NL_CLOUD2_SHAPE, 2.0*abs(pos.y-0.5));
-  return smoothstep(0.2, 1.0, n * b);
+  return smoothstep(0.2, 0.6, n * b);
 }
 
 vec4 renderClouds(vec3 vDir, vec3 vPos, float rain, float time, vec3 fogCol, vec3 skyCol) {
@@ -103,8 +124,8 @@ vec4 renderClouds(vec3 vDir, vec3 vPos, float rain, float time, vec3 fogCol, vec
 
   d.y = 1.0 - 0.7*d.y*d.y;
  
-  vec4 col = vec4(0.6*skyCol, d.x);
-  col.rgb += (vec3(0.03,0.05,0.05) + 0.8*fogCol)*d.y;
+  vec4 col = vec4(0.7*skyCol, d.x);
+  col.rgb += (vec3(0.03,0.05,0.05) + 1.5*fogCol)*d.y;
   col.rgb *= 1.0 - 0.5*rain;
 
   return col;
@@ -117,9 +138,9 @@ vec4 renderAurora(vec3 p, float t, float rain, vec3 FOG_COLOR) {
   p.xz *= NL_AURORA_SCALE;
   p.xz += 0.05*sin(p.x*4.0 + 20.0*t);
 
-  float d0 = sin(p.x*0.1 + t + sin(p.z*0.2));
+  float d0 = sin(p.x*0.2 + t + sin(p.z*0.2));
   float d1 = sin(p.z*0.1 - t + sin(p.x*0.2));
-  float d2 = sin(p.z*0.1 + 1.0*sin(d0 + d1*2.0) + d1*2.0 + d0*1.0);
+  float d2 = sin(p.z*0.2 + 1.0*sin(d0 + d1*2.0) + d1*2.0 + d0*1.0);
   d0 *= d0; d1 *= d1; d2 *= d2;
   d2 = d0/(1.0 + d2/NL_AURORA_WIDTH);
 
