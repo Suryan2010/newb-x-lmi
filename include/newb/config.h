@@ -53,7 +53,7 @@
 
 /* Ambient light on terrain (light that is added everywhere) */
 #define NL_NETHER_AMBIENT vec3(3.0,2.16,1.89)
-#define NL_END_AMBIENT vec3(0.21,0.0,0.21)
+#define NL_END_AMBIENT vec3(0.11,0.11,0.11)
 
 /* Torch colors */
 #define NL_OVERWORLD_TORCH_COL  vec3(1.0,0.52,0.18)
