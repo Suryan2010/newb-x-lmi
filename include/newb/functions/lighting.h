@@ -90,14 +90,25 @@ vec3 nlLighting(
 
     // torch light
     light += torchLight*(1.0-(max(shadow, 0.65*lit.y)*dayFactor*(1.0-0.3*rainFactor)));
+
+    // rainn terrain lighting
+    light *= mix(1.0,0.5, smoothstep(0.0,1.0,rainFactor));
   }
 
+#if NL_TERRAIN_LIGHTING == 1
+  // darken at crevices
+  float col_max = max(COLOR.r, max(COLOR.g, COLOR.b));
+    if (col_max < 0.7) {
+         light *= 0.33;
+  };
+#elif NL_TERRAIN_LIGHTING == 2
   // darken at crevices
   light *= COLOR.g > 0.35 ? 1.0 : 0.8;
+#endif
 
   // brighten tree leaves
   if (isTree) {
-    light *= 1.25;
+    light *= 2.25;
   }
 
   return light;
@@ -141,7 +152,7 @@ vec3 nlActorLighting(vec3 pos, vec4 normal, mat4 world, vec4 tileLightCol, vec4 
   if (nether) {
     light *= tileLightCol.x*NL_NETHER_AMBIENT*0.5;
   } else if (end) {
-    light *= NL_END_AMBIENT;
+    light *= vec3(1.98,1.25,2.3);
   } else if (underWater) {
     light += NL_UNDERWATER_BRIGHTNESS;
     light *= mix(normalize(horizonCol),vec3(1.0,1.0,1.0),tileLightCol.x*0.5);
