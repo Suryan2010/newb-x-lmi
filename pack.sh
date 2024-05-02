@@ -119,7 +119,7 @@ sed -i "3s/.*/\/\/ line 3 reserved/" $CONFIG_FILE
 # pack if zip exists
 if command -v zip &> /dev/null; then
   cd $TEMP_PACK_DIR
-  ZIP_FILE="newb-x-$VERSION-$PLATFORM.mcpack"
+  ZIP_FILE="newb-x-LMI-$VERSION-$PLATFORM.mcpack"
   rm -f $ZIP_FILE
   zip -rq9 ../$ZIP_FILE ./* && echo -e ">> PACKED ZIP\n   - $ZIP_FILE"
 fi
