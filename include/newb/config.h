@@ -205,7 +205,7 @@
 #endif
 
 #ifdef GROUND_REFLECTION
-  #define NL_GROUND_REFL 0.6
+  #define NL_GROUND_REFL 0.9
   #define NL_GROUND_AURORA_REFL
 #endif
 
