@@ -125,7 +125,7 @@ vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 v, float t){
   float s = sin(a*6.0 + t);
   s = s*s;
   s *= 0.5 + 0.5*sin(a*9.0 - 0.4*t);
-  float g = smoothstep(1.2-s, -0.6, v.y);
+  float g = smoothstep(1.3-s, -0.5, v.y);
 
   float f = (0.9*g*g + 0.7*smoothstep(1.5,1.0,v.y));
   float h = (0.5*g*g + 0.8*smoothstep(0.8,-0.4,v.y));
