@@ -150,7 +150,7 @@ vec3 nlActorLighting(vec3 pos, vec4 normal, mat4 world, vec4 tileLightCol, vec4 
 
   // nether, end, underwater tint
   if (nether) {
-    light *= tileLightCol.x*NL_NETHER_AMBIENT*0.5;
+    light *= tileLightCol.x*vec3(3.0,2.16,1.89)*0.5;
   } else if (end) {
     light *= vec3(1.98,1.25,2.3);
   } else if (underWater) {
