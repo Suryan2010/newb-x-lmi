@@ -131,6 +131,7 @@
 #define NL_CLOUD1_OPACITY 0.9              // 0.0 invisible ~ 1.0 opaque
 
 /* Rounded cloud Settings */
+#define NL_SIMPLE_CLOUD2_NOISE 1     // 1:No cloud noise, 2:added Simple cloud noise
 #define NL_CLOUD2_THICKNESS 4.2      // 0.5 slim ~ 5.0 fat
 #define NL_CLOUD2_RAIN_THICKNESS 4.3 // 0.5 slim ~ 5.0 fat
 #define NL_CLOUD2_STEPS 5            // 3 low quality ~ 16 high quality
