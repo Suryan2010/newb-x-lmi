@@ -11,11 +11,13 @@ SUBPACK_OPTIONS=(
   SOFT_CLOUDS
   VANILLA_CLOUDS
   MULTILAYER_CLOUDS
+  SIMPLE_CLOUD_NOISE
   INTENSE_FOG
   RAINBOW
   GROUND_REFL
   NIGHT_VISION
-  APOCALYPSE_TERRAIN
+  COMP_END_SKY
+  IGNORE_THIS
   CHUNK_ANIM
   CHUNK_ANIM_FFT
   NO_WAVE_NO_FOG
@@ -25,13 +27,15 @@ SUBPACK_OPTIONS=(
 )
 SUBPACK_NAMES=(
   "Soft clouds \n\nclassic Newb shader clouds"
-  "Vanilla fog \n\nimproved vanilla cloud (no aurora)"
-  "Multilayer clouds \n\nMultilayer Rounded cloud \n\n!warning! may cause lag on some low - mid devices"
+  "Vanilla clouds \n\nimproved vanilla cloud (no aurora)"
+  "Multilayer clouds \n\n!warning! may cause lag on some low - mid devices"
+  "Simple cloud noise \n\nAdded a simple noisy clouds"
   "Intense fog \n\nincrease the fog intensity \n\n ig it will decrease your visibility but it's good for screenshot"
   "Rainbow \n\nEnable rainbow during rain - clear [always visible]"
   "Ground reflection \n\nadded such as fake ground reflection to terrain [it has some bug]"
   "Night vision \n\nincrease the brightness on night and on cave"
-  "Apocalypse terrain version \n\n still in experimental!! \n\n find some bug? fell free to report it to me"
+  "Complementary End Sky style \n\nMake your End sky like complementary reimagined end sky \nnot too accurate"
+  "nothing"
   "Chunk load animation \n\n added chunk loading animation rise from bottom"
   "Chunk load animation fall from top \n\n like normal chunk load animation \nbut it fall from top"
   "No wave, No fog \n\n disable wave animation [may increase fps] and disable fog effect"
@@ -43,10 +47,12 @@ SUBPACK_MATERIALS=(
   "Clouds"
   "Clouds"
   "Clouds"
+  "Clouds"
+  "RenderChunk"
   "Sky"
   "RenderChunk"
   "RenderChunk"
-  "RenderChunk"
+  "EndSky"
   "RenderChunk"
   "RenderChunk"
   "RenderChunk" 
