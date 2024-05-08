@@ -196,6 +196,11 @@
   #define NL_CLOUD2_MULTILAYER
 #endif
 
+#ifdef SIMPLE_CLOUD_NOISE
+  #undef NL_SIMPLE_CLOUD2_NOISE
+  #define NL_SIMPLE_CLOUD2_NOISE 2
+#endif
+
 #ifdef INTENSE_FOG
   #undef NL_MIST_DENSITY
   #define NL_MIST_DENSITY 2.65
@@ -222,11 +227,6 @@
 #ifdef COMP_END_SKY
   #undef NL_END_SKY_TYPE
   #define NL_END_SKY_TYPE 3
-#endif
-
-#ifdef SIMPLE_CLOUD_NOISE
-  #undef NL_SIMPLE_CLOUD2_NOISE
-  #define NL_SIMPLE_CLOUD2_NOISE 2
 #endif
 
 #ifdef IGNORE_THIS
