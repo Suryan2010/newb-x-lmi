@@ -41,7 +41,7 @@ SUBPACK_NAMES=(
 )
 SUBPACK_MATERIALS=(
   "Clouds"
-  "RenderChunk Clouds"
+  "Clouds"
   "Clouds"
   "Sky"
   "RenderChunk"
