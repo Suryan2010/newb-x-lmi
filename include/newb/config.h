@@ -40,7 +40,7 @@
 #define NL_SUN_INTENSITY 2.95   // 0.5 weak ~ 5.0 bright
 #define NL_TORCH_INTENSITY 1.5  // 0.5 weak ~ 3.0 bright
 #define NL_NIGHT_BRIGHTNESS -0.76 // 0.0 dark ~ 2.0 bright
-#define NL_CAVE_BRIGHTNESS  -0.3 // 0.0 dark ~ 2.0 bright
+#define NL_CAVE_BRIGHTNESS  -0.15 // 0.0 dark ~ 2.0 bright
 #define NL_SHADOW_INTENSITY 1.1 // 0.0 no shadow ~ 1.0 strong shadow
 #define NL_BLINKING_TORCH     // [toggle] flickering light
 #define NL_TERRAIN_LIGHTING 1       // 1:added side shadow to block, 2:normal terrain lighting
@@ -219,9 +219,18 @@
   #define NL_SHADOW_INTENSITY 1.0
 #endif
 
-#ifdef NL_COMP_END_SKY
+#ifdef COMP_END_SKY
   #undef NL_END_SKY_TYPE
   #define NL_END_SKY_TYPE 3
+#endif
+
+#ifdef SIMPLE_CLOUD_NOISE
+  #undef NL_SIMPLE_CLOUD2_NOISE
+  #define NL_SIMPLE_CLOUD2_NOISE 2
+#endif
+
+#ifdef IGNORE_THIS
+  #undef NL_WATER_CLOUD_REFLECTION
 #endif
 
 #ifdef CHUNK_ANIM
