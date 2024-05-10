@@ -50,6 +50,44 @@ float cloudDf(vec3 pos, float rain) {
   u = max((u-NL_CLOUD2_SHAPE)/(1.0-NL_CLOUD2_SHAPE),0.0);
   //u = 3.0*u*u - 2.0*u*u*u;
   vec2 v = 1.0 - u;
+
+  // rain transition
+  vec2 t = vec2(0.1001+0.2*rain, 0.1+0.2*rain*rain);
+
+  float n = mix(
+    mix(randt(p0, t),randt(p0+vec2(1.0,0.0), t), u.x),
+    mix(randt(p0+vec2(0.0,1.0), t),randt(p0+vec2(1.0,1.0), t), u.x),
+    u.y
+  );
+	
+  // round y
+  float b = 1.0 - 1.9*smoothstep(NL_CLOUD2_SHAPE, 2.0 - NL_CLOUD2_SHAPE, 2.0*abs(pos.y-0.5));
+  return smoothstep(0.2, 0.6, n * b);
+}
+
+vec4 renderClouds(vec3 vDir, vec3 vPos, float rain, float time, vec3 fogCol, vec3 skyCol) {
+
+  float height = 7.0*mix(NL_CLOUD2_THICKNESS, NL_CLOUD2_RAIN_THICKNESS, rain);
+
+  // scaled ray offset
+  vec3 deltaP;
+  deltaP.y = 1.0;
+  deltaP.xz = (NL_CLOUD2_SCALE*height)*vDir.xz/(0.02+0.98*abs(vDir.y));
+  //deltaP.xyz = (NL_CLOUD2_SCALE*height)*vDir.xyz;
+  //deltaP.y = abs(deltaP.y);
+  
+  // local cloud pos
+  vec3 pos;
+  pos.y = 0.0;
+  pos.xz = NL_CLOUD2_SCALE*(vPos.xz + vec2(1.0,0.5)*(time*NL_CLOUD2_VELOCIY));
+  pos += deltaP;
+
+  deltaP /= -float(NL_CLOUD2_STEPS);
+  
+  // alpha, gradient
+  vec2 d = vec2(0.0,1.0);
+  for (int i=1; i<=NL_CLOUD2_STEPS; i++) {
+    float m = cloudDf(pos, rain);
 #elif NL_SIMPLE_CLOUD2_NOISE == 2
 
 // 2d noise
@@ -79,8 +117,7 @@ float cloudDf(vec3 pos, float rain, float time) {
   //u = smoothstep(0.99*NL_CLOUD2_SHAPE,1.0,u);
   //u = max((u-NL_CLOUD2_SHAPE)/(1.0-NL_CLOUD2_SHAPE),0.0);
   //u = 3.0*u*u - 2.0*u*u*u;
-#endif
-  
+
   // rain transition
   vec2 t = vec2(0.1001+0.2*rain, 0.1+0.2*rain*rain);
 
@@ -118,6 +155,7 @@ vec4 renderClouds(vec3 vDir, vec3 vPos, float rain, float time, vec3 fogCol, vec
   vec2 d = vec2(0.0,1.0);
   for (int i=1; i<=NL_CLOUD2_STEPS; i++) {
     float m = cloudDf(pos, rain, time);
+#endif
     
     d.x += m;
     d.y = mix(d.y, pos.y, m);
