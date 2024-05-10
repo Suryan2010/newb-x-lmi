@@ -206,7 +206,7 @@
   #undef NL_CLOUD2_SCALE
   #define NL_CLOUD2_SCALE 0.011
   #undef NL_CLOUD2_VELOCIY
-  #undef NL_CLOUD2_VELOCIY 0.0
+  #define NL_CLOUD2_VELOCIY 0.0
 #endif
 
 #ifdef INTENSE_FOG
