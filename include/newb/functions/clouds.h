@@ -117,7 +117,7 @@ vec4 renderClouds(vec3 vDir, vec3 vPos, float rain, float time, vec3 fogCol, vec
   // alpha, gradient
   vec2 d = vec2(0.0,1.0);
   for (int i=1; i<=NL_CLOUD2_STEPS; i++) {
-    float m = cloudDf(pos, rain);
+    float m = cloudDf(pos, rain, time);
     
     d.x += m;
     d.y = mix(d.y, pos.y, m);
