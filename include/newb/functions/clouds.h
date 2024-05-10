@@ -41,6 +41,17 @@ vec4 renderCloudsSimple(vec3 pos, highp float t, float rain, vec3 zenithCol, vec
 
 // rounded cloud
 
+#if NL_SIMPLE_CLOUD2_NOISE == 1
+// rounded clouds 3D density map
+float cloudDf(vec3 pos, float rain) {
+  vec2 p0 = floor(pos.xz);
+  vec2 u = pos.xz - p0;
+  //u = smoothstep(0.99*NL_CLOUD2_SHAPE,1.0,u);
+  u = max((u-NL_CLOUD2_SHAPE)/(1.0-NL_CLOUD2_SHAPE),0.0);
+  //u = 3.0*u*u - 2.0*u*u*u;
+  vec2 v = 1.0 - u;
+#elif NL_SIMPLE_CLOUD2_NOISE == 2
+
 // 2d noise
 float noise(vec2 p){
   vec2 p0 = floor(p);
@@ -59,22 +70,15 @@ float noise(vec2 p){
 }
 
 // rounded clouds 3D density map
-#if NL_SIMPLE_CLOUD2_NOISE == 1
-float cloudDf(vec3 pos, float rain) {
-  vec2 p0 = floor(pos.xz);
-  vec2 u = pos.xz - p0;
-  //u = smoothstep(0.99*NL_CLOUD2_SHAPE,1.0,u);
-  u = max((u-NL_CLOUD2_SHAPE)/(1.0-NL_CLOUD2_SHAPE),0.0);
-  //u = 3.0*u*u - 2.0*u*u*u;
-  vec2 v = 1.0 - u;
-#elif NL_SIMPLE_CLOUD2_NOISE == 2
-float cloudDf(vec3 pos, float rain) {
+float cloudDf(vec3 pos, float rain, float time) {
+  pos.x += 0.5*noise(7.0*pos.xz) + 0.2*time;
+  pos.y += 0.0*noise(0.0*pos.xz);
+  pos.z += 0.5*noise(7.0*pos.xz) + 0.2*time;
   vec2 p0 = floor(pos.xz);
   vec2 u = pos.xz - p0;
   //u = smoothstep(0.99*NL_CLOUD2_SHAPE,1.0,u);
   //u = max((u-NL_CLOUD2_SHAPE)/(1.0-NL_CLOUD2_SHAPE),0.0);
   //u = 3.0*u*u - 2.0*u*u*u;
-  vec2 v = 1.0 - u;
 #endif
   
   // rain transition
