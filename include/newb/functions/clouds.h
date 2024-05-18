@@ -71,9 +71,9 @@ float noise(vec2 p){
 
 // rounded clouds 3D density map
 float cloudDf(vec3 pos, float rain, float time) {
-  pos.x += 0.5*noise(7.0*pos.xz) + 0.2*time;
+  pos.x += 0.3*noise(7.0*pos.xz) + 0.1*time;
   pos.y += 0.0*noise(0.0*pos.xz);
-  pos.z += 0.5*noise(7.0*pos.xz) + 0.2*time;
+  pos.z += 0.3*noise(7.0*pos.xz) + 0.1*time;
   vec2 p0 = floor(pos.xz);
   vec2 u = pos.xz - p0;
   //u = smoothstep(0.99*NL_CLOUD2_SHAPE,1.0,u);
@@ -92,7 +92,7 @@ float cloudDf(vec3 pos, float rain, float time) {
 	
   // round y
   float b = 1.0 - 1.9*smoothstep(NL_CLOUD2_SHAPE, 2.0 - NL_CLOUD2_SHAPE, 2.0*abs(pos.y-0.5));
-  return smoothstep(0.2, 0.6, n * b);
+  return smoothstep(0.0, 0.65, n * b);
 }
 
 vec4 renderClouds(vec3 vDir, vec3 vPos, float rain, float time, vec3 fogCol, vec3 skyCol) {
@@ -133,14 +133,14 @@ vec4 renderClouds(vec3 vDir, vec3 vPos, float rain, float time, vec3 fogCol, vec
   d.x = d.x / ((float(NL_CLOUD2_STEPS)/NL_CLOUD2_DENSITY) + d.x);
   
   if (vPos.y > 0.0) { // view from bottom
-    d.y = 1.0 - d.y;
+    d.y = 1.09 - d.y;
   }
 
-  d.y = 1.0 - 0.7*d.y*d.y;
+  d.y = 1.0 - 0.8*d.y*d.y;
  
   vec4 col = vec4(0.7*skyCol, d.x);
   col.rgb += (vec3(0.03,0.05,0.05) + 1.5*fogCol)*d.y;
-  col.rgb *= 1.0 - 0.5*rain;
+  col.rgb *= 1.0 - 0.8*rain;
 
   return col;
 }
