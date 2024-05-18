@@ -70,8 +70,8 @@
 #define NL_DAY_ZENITH_COL    vec3(0.0,0.19,0.78)
 #define NL_DAY_HORIZON_COL   vec3(0.68,0.88,1.0)
 
-#define NL_NIGHT_ZENITH_COL  vec3(0.0,0.0,0.0)
-#define NL_NIGHT_HORIZON_COL vec3(0.0,0.1,0.2)
+#define NL_NIGHT_ZENITH_COL  vec3(0.0,0.0,0.07)
+#define NL_NIGHT_HORIZON_COL vec3(0.0,0.0,0.2)
 
 #define NL_RAIN_ZENITH_COL   vec3(0.35,0.35,0.35)
 #define NL_RAIN_HORIZON_COL  vec3(0.5,0.5,0.5)
@@ -189,7 +189,6 @@
 #ifdef VANILLA_CLOUDS
   #undef NL_CLOUD_TYPE
   #define NL_CLOUD_TYPE 0
-  #undef NL_WATER_CLOUD_REFLECTION
 #endif
 
 #ifdef MULTILAYER_CLOUDS
