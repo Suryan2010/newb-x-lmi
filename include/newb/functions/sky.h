@@ -140,7 +140,7 @@ vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 v, float t){
   v.y = smoothstep(0.1,1.0,abs(v.y));
   v.x += 0.0*sin(0.0*v.y - t + v.z);
 
-  float a = atan(v.x,v.z);
+  float a = atan2(v.x,v.z);
 
   float s = sin(a*9.0 + t);
   s = s*s;
