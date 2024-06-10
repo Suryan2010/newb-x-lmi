@@ -17,6 +17,7 @@ SUBPACK_OPTIONS=(
   GROUND_REFL
   NIGHT_VISION
   COMP_END_SKY
+  NO_SHOOTING_STAR
   IGNORE_THIS
   CHUNK_ANIM
   CHUNK_ANIM_FFT
@@ -35,6 +36,7 @@ SUBPACK_NAMES=(
   "Ground reflection \n\nadded such as fake ground reflection to terrain [it has some bug]"
   "Night vision \n\nincrease the brightness on night and on cave"
   "Complementary End Sky style \n\nMake your End sky like complementary reimagined end sky \nnot too accurate"
+  "No shooting star\n\ndisable shooting star if it's looks weird for u"
   "nothing"
   "Chunk load animation \n\n added chunk loading animation rise from bottom"
   "Chunk load animation fall from top \n\n like normal chunk load animation \nbut it fall from top"
@@ -53,6 +55,7 @@ SUBPACK_MATERIALS=(
   "RenderChunk"
   "RenderChunk"
   "EndSky"
+  "Sky"
   "RenderChunk"
   "RenderChunk"
   "RenderChunk" 
