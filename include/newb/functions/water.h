@@ -46,12 +46,12 @@ vec4 nlWater(
 
         #ifdef NL_AURORA
         vec4 aurora = renderAurora(projectedPos.xyy, t, rainFactor, FOG_COLOR);
-        waterRefl += 4.6*aurora.rgb*aurora.a*fade;
+        waterRefl += 1.6*aurora.rgb*aurora.a*fade;
         #endif
 
         #if NL_CLOUD_TYPE == 1
         vec4 clouds = renderCloudsSimple(projectedPos.xyy, t, rainFactor, zenithCol, horizonCol, horizonEdgeCol);
-        waterRefl = mix(waterRefl, 8.5*clouds.rgb, clouds.a*fade);
+        waterRefl = mix(waterRefl, 2.5*clouds.rgb, clouds.a*fade);
         #endif
       }
     #endif
