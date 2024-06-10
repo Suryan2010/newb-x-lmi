@@ -77,9 +77,16 @@ vec3 nlLighting(
     shadow *= shade > 0.8 ? 1.0 : 0.8;
 
     // shadow cast by simple cloud
-    #ifdef NL_CLOUD_SHADOW
-      shadow *= 1.0 - cloudNoise2D(wPos.xz*NL_CLOUD1_SCALE, t, rainFactor);
-    #endif
+#ifdef NL_CLOUD_SHADOW
+  #if NL_CLOUD_TYPE == 1
+    shadow *= 1.0 - cloudNoise2D(wPos.xz*NL_CLOUD1_SCALE, t, rainFactor);
+  #elif NL_CLOUD_TYPE == 2
+    vec3 cloudPos = vec3(wPos.x, 0.0, wPos.z)*0.07 + vec3(1.0,0.0,0.5)*((0.2*0.25)*t);
+    cloudPos.y = 0.5;
+      
+    shadow *= 1.0-cloudDf(cloudPos, rainFactor, t); 
+  #endif
+#endif
 
     // direct light from top
     float dirLight = shadow*(1.0-uv1.x*nightFactor)*lightIntensity;
@@ -92,7 +99,7 @@ vec3 nlLighting(
     light += torchLight*(1.0-(max(shadow, 0.65*lit.y)*dayFactor*(1.0-0.3*rainFactor)));
 
     // rainn terrain lighting
-    light *= mix(1.0,0.5, smoothstep(0.0,1.0,rainFactor));
+    light *= mix(1.0,0.6, smoothstep(0.0,1.0,rainFactor));
   }
 
 #if NL_TERRAIN_LIGHTING == 1
@@ -100,6 +107,10 @@ vec3 nlLighting(
   float col_max = max(COLOR.r, max(COLOR.g, COLOR.b));
     if (col_max < 0.7) {
          light *= 0.33;
+
+    if (!isTree) {
+      return light *= COLOR.g > 0.35 ? 1.0 : 0.8;
+    }
   };
 #elif NL_TERRAIN_LIGHTING == 2
   // darken at crevices
@@ -108,7 +119,7 @@ vec3 nlLighting(
 
   // brighten tree leaves
   if (isTree) {
-    light *= 2.05;
+    light *= 2.15;
   }
 
   return light;
