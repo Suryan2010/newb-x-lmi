@@ -97,11 +97,13 @@ void nlWave(
 
   float windStrength = lit.y*(noise1D(t*0.36) + rainFactor*0.4);
 
+#ifdef NL_BOTTOM_PLANTS_SHADOW
   // darken plants bottom - better to not move it elsewhere
   light *= isFarmPlant && !isTop ? 0.7 : 1.1;
   if (isColored && !isTreeLeaves && uv0.y>0.43 && uv0.y<0.48) {
-    light *= isTop ? 1.2 : 1.2 - 1.4*(bPos.y>0.0 ? 1.5-bPos.y : 0.5);
+    light *= isTop ? 1.2 : 1.2 - NL_BOTTOM_PLANTS_SHADOW*(bPos.y>0.0 ? 1.5-bPos.y : 0.5);
   }
+#endif
 
 #ifdef NL_PLANTS_WAVE
   
