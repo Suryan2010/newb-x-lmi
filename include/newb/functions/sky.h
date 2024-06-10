@@ -118,19 +118,19 @@ vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 viewDir, float t) {
 #elif NL_END_SKY_TYPE == 2
 vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 v, float t){
   vec3 sky = vec3(0.0,0.0,0.0);
-  v.x += 0.01*sin(05.0*v.y - t + v.z);
+  v.x += 0.01*sin(0.05*v.y - t + v.z);
 
   float a = atan2(v.x,v.z);
 
   float s = sin(a*6.0 + t);
   s = s*s;
   s *= 0.5 + 0.5*sin(a*8.0 - 0.4*t);
-  float g = smoothstep(1.15-s, -0.8, v.y);
+  float g = smoothstep(1.15-s, -0.95, v.y);
 
-  float f = (0.9*g*+ 0.48*smoothstep(1.5,1.0,v.y));
-  float h = (0.5*g + 0.8*smoothstep(0.8,-0.8,v.y));
+  float f = (0.9*g + 0.25*smoothstep(1.5,1.0,v.y));
+  float h = (0.8*g + 0.8*smoothstep(1.8,-0.8,v.y));
   sky += mix(zenithCol, horizonCol, f*f*f);
-  sky += (g*g*g*0.5 + 0.4*h*h*h)*vec3(0.73,0.29,1.0);
+  sky += (g*g*g*0.45 + 0.4*h*h*h)*vec3(0.73,0.29,1.0);
   
   return sky;
 }
@@ -142,16 +142,16 @@ vec3 renderEndSky(vec3 horizonCol, vec3 zenithCol, vec3 v, float t){
 
   float a = atan2(v.x,v.z);
 
-  float s = sin(a*9.0 + t);
+  float s = sin(a*6.0 + t);
   s = s*s;
-  s *= 0.5 + 0.5*sin(a*9.0 - 0.9*t);
-  float g = smoothstep(1.45-s, -0.7, v.y);
+  s *= 0.5 + 0.5*sin(a*9.0 - 0.6*t);
+  float g = smoothstep(1.4-s, -0.8, v.y);
 
-  float f = (0.9*g + 0.4*smoothstep(1.5,1.0,v.y));
-  float h = (0.8*g + 0.8*smoothstep(0.7,-0.5,v.y));
-  sky += mix(zenithCol, horizonCol, f*f*f*f);
-  sky += (g*g*g*g*0.9 + 0.8*h*h*h*h)*vec3(0.73,0.29,1.0);
-  
+  float f = (0.9*g + 0.35*smoothstep(1.5,1.0,v.y));
+  float h = (0.8*g + 0.9*smoothstep(0.7,-0.5,v.y));
+  sky += mix(zenithCol, horizonCol, f*f*f);
+  sky += (g*g*g*0.9 + 0.8*h*h*h)*vec3(0.73,0.29,1.0);
+
   return sky;
 }
 #endif
