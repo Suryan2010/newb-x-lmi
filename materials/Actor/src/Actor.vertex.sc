@@ -82,7 +82,7 @@ void main() {
 
   vec4 fogColor;
   fogColor.rgb = newFog;
-  fogColor.a = nlRenderFogFade(camDist, FogColor.rgb, FogControl.xy);
+  fogColor.a = nlRenderFogFade(newFog, camDist, nether, end, underWater, FogColor.rgb, FogControl.xy, worldPosition, vec3(0.0, 0.0, 0.0), ViewPositionAndTime.w);
 
   if (nether) {
     // blend fog with void color
