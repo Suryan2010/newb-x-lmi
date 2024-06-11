@@ -122,9 +122,9 @@ void main() {
 
   vec4 fogColor;
   fogColor.rgb = nlRenderSky(horizonEdgeCol, horizonCol, zenithCol, viewDir, FogColor.rgb, t, rainFactor, end, underWater, nether);
-  fogColor.a = nlRenderFogFade(relativeDist, FogColor.rgb, FogAndDistanceControl.xy);
+  fogColor.a = nlRenderFogFade(horizonEdgeCol, relativeDist, nether, end, underWater, FogColor.rgb, FogAndDistanceControl.xy, worldPos, vec3(0.0, 0.0, 0.0), t);
   #ifdef NL_GODRAY 
-    fogColor.a = mix(fogColor.a, 1.0, NL_GODRAY*nlRenderGodRayIntensity(cPos, worldPos, t, uv1, relativeDist, FogColor.rgb));
+    fogColor.a = nlRenderGodRay(cPos, worldPos, t, uv1, relativeDist, FogColor.rgb, fogColor.a);
   #endif
 
   if (nether) {
