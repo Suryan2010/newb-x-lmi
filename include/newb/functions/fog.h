@@ -3,7 +3,7 @@
 
 #include "tonemap.h"
 
-float nlRenderFogFade(float relativeDist, vec3 FOG_COLOR, vec2 FOG_CONTROL) {
+float nlRenderFogFade(vec3 fogColor, float relativeDist, bool nether, bool end, bool underwater, vec3 FOG_COLOR, vec2 FOG_CONTROL, vec3 wPos, vec3 tsp, float time) {
 #if NL_FOG_TYPE == 0
   // no fog
   return 0.0;
