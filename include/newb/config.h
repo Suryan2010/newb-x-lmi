@@ -64,7 +64,7 @@
 
 /* Fog */
 #define NL_FOG_TYPE 2             // 0:no fog, 1:vanilla, 2:smoother vanilla
-#define NL_MIST_DENSITY 1.84      // 0.0 no mist ~ 1.0 misty
+#define NL_MIST_DENSITY 1.98      // 0.0 no mist ~ 1.0 misty
 #define NL_RAIN_MIST_OPACITY 0.32 // [toggle] 0.04 very subtle ~ 0.5 thick rain mist blow
 
 /* Sky colors - zenith=top, horizon=bottom */
@@ -156,7 +156,7 @@
 #define NL_SUNMOON_SIZE 1.43     // 0.3 tiny ~ 4.0 massive
 
 /* Fake godrays during sunrise/sunset */
-#define NL_GODRAY    // [toggle] Fake godrays during sunrise/sunset
+#define NL_GODRAY 1.67   // [toggle] 1.0 subtle ~ 3.0 bright
 
 /* Sky reflection */
 //#define NL_GROUND_REFL 0.57       // [toggle] 0.2 slightly reflective ~ 1.0 fully reflect sky 
