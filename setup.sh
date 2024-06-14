@@ -5,7 +5,7 @@ MBT_JAR=env/jar/MaterialBinTool-$MBT_VERSION-all.jar
 SHADERC=env/bin/shaderc
 DATA_DIR=data
 
-MBT_JAR_URL="https://github.com/devendrn/newb-shader/releases/download/dev/MaterialBinTool-$MBT_VERSION-all"
+MBT_JAR_URL="https://github.com/devendrn/newb-shader/releases/download/dev/MaterialBinTool-$MBT_VERSION-all.jar"
 M_DATA_URL="https://github.com/devendrn/RenderDragonData"
 
 CPU_ARCH=$(uname -m)
