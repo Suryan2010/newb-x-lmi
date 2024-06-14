@@ -156,7 +156,7 @@
 #define NL_SUNMOON_SIZE 1.43     // 0.3 tiny ~ 4.0 massive
 
 /* Fake godrays during sunrise/sunset */
-#define NL_GODRAY 1.67   // [toggle] 1.0 subtle ~ 3.0 bright
+#define NL_GODRAY 1.87   // [toggle] 1.0 subtle ~ 3.0 bright
 
 /* Sky reflection */
 //#define NL_GROUND_REFL 0.57       // [toggle] 0.2 slightly reflective ~ 1.0 fully reflect sky 
