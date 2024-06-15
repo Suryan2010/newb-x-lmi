@@ -37,14 +37,14 @@
 //#define NL_TINT vec3(1.0,0.75,0.5) // [toggle] color overlay
 
 /* Terrain lighting */
-#define NL_SUN_INTENSITY 2.85   // 0.5 weak ~ 5.0 bright
+#define NL_SUN_INTENSITY 2.95   // 0.5 weak ~ 5.0 bright
 #define NL_TORCH_INTENSITY 1.48  // 0.5 weak ~ 3.0 bright
 #define NL_NIGHT_BRIGHTNESS -0.36 // 0.0 dark ~ 2.0 bright
 #define NL_CAVE_BRIGHTNESS  -0.05 // 0.0 dark ~ 2.0 bright
 #define NL_SHADOW_INTENSITY 1.0 // 0.0 no shadow ~ 1.0 strong shadow
 #define NL_BLINKING_TORCH     // [toggle] flickering light
 #define NL_TERRAIN_LIGHTING 1       // 1:added side shadow to block, 2:normal terrain lighting
-#define NL_BOTTOM_PLANTS_SHADOW 1.38    // 0.5 subtle ~ 2.0 dark
+//#define NL_BOTTOM_PLANTS_SHADOW 1.38    // 0.5 subtle ~ 2.0 dark
 //#define NL_CLOUD_SHADOW       // [toggle] cloud shadow (simple clouds only)
 
 /* Sun/moon light color on terrain */
@@ -94,7 +94,7 @@
 
 /* Waving */
 #define NL_PLANTS_WAVE 0.05    // [toggle] 0.02 gentle ~ 0.4 violent
-#define NL_LANTERN_WAVE 0.16   // [toggle] 0.05 subtle ~ 0.4 large swing
+//#define NL_LANTERN_WAVE 0.16   // [toggle] 0.05 subtle ~ 0.4 large swing
 #define NL_WAVE_SPEED 2.8      // 0.5 slow wave ~ 5.0 very fast wave
 //#define NL_EXTRA_PLANTS_WAVE // [toggle] !dont use! wave using texture coords (1.20.40 vanilla)
 
