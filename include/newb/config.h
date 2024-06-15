@@ -37,7 +37,7 @@
 //#define NL_TINT vec3(1.0,0.75,0.5) // [toggle] color overlay
 
 /* Terrain lighting */
-#define NL_SUN_INTENSITY 3.15   // 0.5 weak ~ 5.0 bright
+#define NL_SUN_INTENSITY 2.85   // 0.5 weak ~ 5.0 bright
 #define NL_TORCH_INTENSITY 1.48  // 0.5 weak ~ 3.0 bright
 #define NL_NIGHT_BRIGHTNESS -0.36 // 0.0 dark ~ 2.0 bright
 #define NL_CAVE_BRIGHTNESS  -0.05 // 0.0 dark ~ 2.0 bright
