@@ -109,7 +109,7 @@ void main() {
   );
 
 #if defined(ALPHA_TEST) && (defined(NL_PLANTS_WAVE) || defined(NL_LANTERN_WAVE))
-  nlWave(worldPos, light, rainFactor, uv1, lit, a_texcoord0, bPos, a_color0, cPos, tiledCpos, t, isColored, camDis, isTree);
+  nlWave(worldPos, light, rainFactor, uv1, lit, a_texcoord0*vec2(2.0,0.5), bPos, a_color0, cPos, tiledCpos, t, isColored, camDis, isTree);
 #endif
 
 #ifdef NL_CHUNK_LOAD_ANIM
