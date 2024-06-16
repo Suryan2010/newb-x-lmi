@@ -18,7 +18,7 @@ vec3 glowDetect(vec4 diffuse) {
 }
 
 vec3 glowDetectC(sampler2D tex, vec2 uv) {
-  return glowDetect(texture2D(tex, uv));
+  return glowDetect(texture2DLod(tex, uv, 0.0));
 }
 
 vec3 nlGlow(sampler2D tex, vec2 uv, vec4 diffuse, float shimmer) {
