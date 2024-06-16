@@ -44,7 +44,7 @@
 #define NL_SHADOW_INTENSITY 1.0 // 0.0 no shadow ~ 1.0 strong shadow
 #define NL_BLINKING_TORCH     // [toggle] flickering light
 #define NL_TERRAIN_LIGHTING 1       // 1:added side shadow to block, 2:normal terrain lighting
-//#define NL_BOTTOM_PLANTS_SHADOW 1.38    // 0.5 subtle ~ 2.0 dark
+#define NL_BOTTOM_PLANTS_SHADOW 1.38    // 0.5 subtle ~ 2.0 dark
 //#define NL_CLOUD_SHADOW       // [toggle] cloud shadow (simple clouds only)
 
 /* Sun/moon light color on terrain */
